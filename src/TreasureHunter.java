@@ -124,9 +124,16 @@ public class TreasureHunter {
             System.out.println("(L)ook for trouble!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
+
+            if (hunter.getGold() < 0) {
+                System.out.println("You've run out of gold and can't continue the hunt. Game over!");
+                break;
+            }
+
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
+
         }
     }
 
