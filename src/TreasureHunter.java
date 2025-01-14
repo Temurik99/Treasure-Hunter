@@ -17,6 +17,7 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
     private boolean testMode;
+    private int checkForSearched = 0;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -104,6 +105,7 @@ public class TreasureHunter {
         currentTown.hunterArrives(hunter);
     }
 
+
     /**
      * Displays the menu and receives the choice from the user.<p>
      * The choice is sent to the processChoice() method for parsing.<p>
@@ -122,6 +124,7 @@ public class TreasureHunter {
             System.out.println("(E)xplore surrounding terrain.");
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
+            System.out.println("(H)unt for treasure");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
 
@@ -137,6 +140,7 @@ public class TreasureHunter {
         }
     }
 
+
     /**
      * Takes the choice received from the menu and calls the appropriate method to carry out the instructions.
      * @param choice The action to process.
@@ -151,9 +155,15 @@ public class TreasureHunter {
                 // This town is going away so print its news ahead of time.
                 System.out.println(currentTown.getLatestNews());
                 enterTown();
+                checkForSearched = 0;
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
+        } else if (choice.equals("h") && checkForSearched == 1) {
+            currentTown.setNewsTo("you have already searched this town");
+        } else if (choice.equals("h")) {
+            currentTown.huntForTreasure();
+            checkForSearched = 1;
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {

@@ -39,6 +39,10 @@ public class Town {
         return printMessage;
     }
 
+    public void setNewsTo(String set) {
+        printMessage = set;
+    }
+
     /**
      * Assigns an object to the Hunter in town.
      *
@@ -110,6 +114,23 @@ public class Town {
                 printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
                 hunter.changeGold(-goldDiff);
             }
+        }
+    }
+
+    public void huntForTreasure() {
+        int itemFound = (int) (Math.random() * 4) + 1;
+
+        if (itemFound == 1) {
+            printMessage = "You found a Crown!";
+            hunter.addItemToTreasure("crown");
+        } else if (itemFound == 2) {
+            printMessage = "You found a Trophy!";
+            hunter.addItemToTreasure("trophy");
+        } else if (itemFound == 3) {
+            printMessage = "You found a Gem!";
+            hunter.addItemToTreasure("gem");
+        } else {
+            printMessage = "You found only dust.";
         }
     }
 
