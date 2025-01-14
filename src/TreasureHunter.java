@@ -77,6 +77,12 @@ public class TreasureHunter {
 
         if (testMode) {
             hunter.changeGold(80);
+            hunter.addItem("water");
+            hunter.addItem("rope");
+            hunter.addItem("machete");
+            hunter.addItem("horse");
+            hunter.addItem("boat");
+            hunter.addItem("boots");
         }
 
         if (hardMode) {
