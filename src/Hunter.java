@@ -66,7 +66,6 @@ public class Hunter {
             return true;
         }
     }
-
     /**
      * The Hunter is selling an item to a shop for gold.<p>
      * This method checks to make sure that the seller has the item and that the seller is getting more than 0 gold.
@@ -216,7 +215,7 @@ public class Hunter {
      * @param item String to look for.
      * @return The index of the item, or -1 if not found.
      */
-    private int findItemInKit(String item) {
+    public int findItemInKit(String item) {
         for (int i = 0; i < kit.length; i++) {
             String tmpItem = kit[i];
 
@@ -275,5 +274,13 @@ public class Hunter {
 
     public int getGold() {
         return gold;
+    }
+
+    public void extend(){
+        String[] temp = kit;
+        kit = new String[temp.length + 1];
+        for (int i = 0; i < temp.length; i++) {
+            kit[i] = temp[i];
+        }
     }
 }

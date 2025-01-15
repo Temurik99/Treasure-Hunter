@@ -68,7 +68,7 @@ public class TreasureHunter {
             } else if (hard.equals("s")) {
                 samuraiMode = true;
             } else {
-                    System.out.print("That ain't an option, bucko. Try again: ");
+                System.out.print("That ain't an option, bucko. Try again: ");
             }
         }
     }
@@ -136,6 +136,7 @@ public class TreasureHunter {
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
             System.out.println("(H)unt for treasure");
+            System.out.println("(D)ig for gold");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
 
@@ -162,8 +163,11 @@ public class TreasureHunter {
      * @param choice The action to process.
      */
     private void processChoice(String choice) {
-        if (choice.equals("b") || choice.equals("s")) {
+        if (choice.equals("b") || choice.equals("s") || choice.equals("d")) {
             currentTown.enterShop(choice);
+            if (choice.equals("d")){
+                System.out.println("WAIT");
+            }
         } else if (choice.equals("e")) {
             System.out.println(currentTown.getTerrain().infoString());
         } else if (choice.equals("m")) {

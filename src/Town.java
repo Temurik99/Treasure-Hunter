@@ -202,4 +202,6 @@ public class Town {
         double rand = Math.random();
         return (rand < 0.5);
     }
+
+
 }
