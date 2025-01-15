@@ -11,6 +11,7 @@ public class Town {
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private int digs = 0;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -203,5 +204,12 @@ public class Town {
         return (rand < 0.5);
     }
 
+    public void addDigs(){
+        digs++;
+    }
+
+    public int manageDigs(){
+        return digs;
+    }
 
 }
