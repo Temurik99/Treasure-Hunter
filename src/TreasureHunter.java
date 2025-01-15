@@ -154,6 +154,10 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
 
+            if (choice.equals("e")) {
+                currentTown.setNewsTo(currentTown.wonBrawl());
+            }
+
         }
     }
 
