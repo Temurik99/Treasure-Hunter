@@ -14,8 +14,8 @@ public class Shop {
     private static final int HORSE_COST = 12;
     private static final int BOAT_COST = 20;
     private static final int BOOTS_COST = 10;
-    private static final int SWORD_COST = 0;
     private static final int SHOVEL_COST = 8;
+    private static final int SWORD_COST = 0;
 
     // static variables
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -71,21 +71,6 @@ public class Shop {
                     }
                 }
             }
-
-        } else if (buyOrSell.equals("d")) {
-            if(hunter.findItemInKit("shovel") != -1){
-                System.out.println("Start diggin' boy!");
-            }
-            else{
-                System.out.print("Lookin' for riches, boy? Take this here shovel I have laying around! It's gonna cost you 8 smackeroos!");
-                if (hunter.getGold() < SHOVEL_COST){
-                    System.out.println("What you doing here with empty pockets ya dummy?! \nGo dig for gold with your hands or knock yourself out in the fighting alley, scum!");
-                } else {
-                    hunter.extend();
-                    hunter.buyItem("shovel", SHOVEL_COST);
-                    System.out.println("Welp, you got your shovel. Now HAVE AT IT!!");
-                }
-            }
         } else {
             System.out.println("What're you lookin' to sell? ");
             System.out.print("You currently have the following items: " + customer.getInventory());
@@ -118,6 +103,7 @@ public class Shop {
             str += "Horse: " + HORSE_COST + " gold\n";
             str += "Boat: " + BOAT_COST + " gold\n";
             str += "Boots: " + BOOTS_COST + " gold\n";
+            str += "Shovel: " + SHOVEL_COST + " gold\n";
             str += "Sword: " + SWORD_COST + " gold\n";
             return str;
         } else {
@@ -127,6 +113,7 @@ public class Shop {
             str += "Horse: " + HORSE_COST + " gold\n";
             str += "Boat: " + BOAT_COST + " gold\n";
             str += "Boots: " + BOOTS_COST + " gold\n";
+            str += "Shovel: " + SHOVEL_COST + " gold\n";
             return str;
         }
     }
@@ -203,6 +190,8 @@ public class Shop {
             return BOAT_COST;
         } else if (item.equals("boots")) {
             return BOOTS_COST;
+        } else if (item.equals("shovel")) {
+            return SHOVEL_COST;
         } else {
             return 0;
         }

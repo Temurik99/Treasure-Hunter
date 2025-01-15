@@ -20,9 +20,9 @@ public class Hunter {
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
         if (!(TreasureHunter.ifSamuraiMode())) {
-            kit = new String[6];// only 6 possible items can be stored in kit
+            kit = new String[8];// only 6 possible items can be stored in kit
         } else {
-            kit = new String[7];//including Sword
+            kit = new String[9];//including Sword
         }
         Treasure = new String[3];
         gold = startingGold;

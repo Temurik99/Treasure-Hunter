@@ -19,6 +19,7 @@ public class TreasureHunter {
     private boolean testMode;
     private static boolean samuraiMode;
     private int checkForSearched = 0;
+    private final int maxDigs = 1;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -167,10 +168,26 @@ public class TreasureHunter {
      * @param choice The action to process.
      */
     private void processChoice(String choice) {
-        if (choice.equals("b") || choice.equals("s") || choice.equals("d")) {
+        if (choice.equals("b") || choice.equals("s")) {
             currentTown.enterShop(choice);
-            if (choice.equals("d")){
-                System.out.println("WAIT");
+        }
+        if (choice.equals("d")){
+            if (!(hunter.hasItemInKit("shovel"))){
+                System.out.println("You can't dig for gold without a shovel. \nYou need a shovel to dig, y'know ^^");
+            } else {
+                if (currentTown.manageDigs() == maxDigs){
+                    System.out.println("You already dug for gold in this town. \nPack up your kit and move elsewhere to find gold!");
+                } else {
+                    int jeapordy = (int) (Math.random() * 2);
+                    if (jeapordy == 0){
+                        System.out.println("You dug but all you found was dirt...");
+                    } else {
+                        int goldFound = (int) (Math.random() * 20) + 1;
+                        hunter.changeGold(goldFound);
+                        System.out.println("JACKPOT! You won " + goldFound + " gold!");
+                    }
+                    currentTown.addDigs();
+                }
             }
         } else if (choice.equals("e")) {
             System.out.println(currentTown.getTerrain().infoString());
