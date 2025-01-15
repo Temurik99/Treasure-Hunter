@@ -189,6 +189,14 @@ public class Hunter {
         return str;
     }
 
+    public boolean isTreasureFull() {
+        if (emptyPositionInTreasure() == -1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Searches kit Array for the index of the specified value.
      *

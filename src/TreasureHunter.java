@@ -140,6 +140,11 @@ public class TreasureHunter {
                 break;
             }
 
+            if (hunter.isTreasureFull()) {
+                System.out.println("Congratulations, you have found the last of the three treasures, you win!");
+                break;
+            }
+
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
