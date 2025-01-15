@@ -17,6 +17,7 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
     private boolean testMode;
+    private static boolean samuraiMode;
     private int checkForSearched = 0;
 
     /**
@@ -28,6 +29,7 @@ public class TreasureHunter {
         hunter = null;
         hardMode = false;
         testMode = false;
+        samuraiMode = false;
     }
 
     /**
@@ -53,7 +55,7 @@ public class TreasureHunter {
 
         String hard = "";
 
-        while(!(hard.equals("y") || hard.equals("n") || hard.equals("test"))) {
+        while(!(hard.equals("y") || hard.equals("n") || hard.equals("test") || hard.equals("s"))) {
             System.out.print("Hard mode? (y/n) Or just type \"test\" for test mode: ");
             hard = SCANNER.nextLine().toLowerCase();
             if (hard.equals("y")) {
@@ -63,8 +65,10 @@ public class TreasureHunter {
                 hardMode = false;
             } else if (hard.equals("test")) {
                 testMode = true;
+            } else if (hard.equals("s")) {
+                samuraiMode = true;
             } else {
-                System.out.print("That ain't an option, bucko. Try again: ");
+                    System.out.print("That ain't an option, bucko. Try again: ");
             }
         }
     }
@@ -180,6 +184,15 @@ public class TreasureHunter {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
+        }
+    }
+
+
+    public static boolean ifSamuraiMode() {
+        if (samuraiMode) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
