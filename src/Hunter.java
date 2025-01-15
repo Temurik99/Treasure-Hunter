@@ -182,7 +182,7 @@ public class Hunter {
     public String infoStringTreasure() {
         String str = "";
         if (!TreasureIsEmpty()) {
-            str = "Treasures found: a " + getInventoryTreasure();
+            str = "Treasures found: " + getInventoryTreasure() + " ";
         } else {
             str = "Treasures found: none";
         }
