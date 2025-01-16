@@ -15,6 +15,7 @@ public class TreasureHunter {
     // instance variables
     private Town currentTown;
     private Hunter hunter;
+    private static boolean easyMode;
     private boolean hardMode;
     private boolean testMode;
     private static boolean samuraiMode;
@@ -28,6 +29,7 @@ public class TreasureHunter {
         // these will be initialized in the play method
         currentTown = null;
         hunter = null;
+        easyMode = false;
         hardMode = false;
         testMode = false;
         samuraiMode = false;
@@ -54,20 +56,27 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 20);
 
-        String hard = "";
+        String difficulty = "";
 
-        while(!(hard.equals("y") || hard.equals("n") || hard.equals("test") || hard.equals("s"))) {
-            System.out.print("Hard mode? (y/n) Or just type \"test\" for test mode: ");
-            hard = SCANNER.nextLine().toLowerCase();
-            if (hard.equals("y")) {
+        while(!(difficulty.equals("e") || difficulty.equals("n") || difficulty.equals("h") || difficulty.equals("test") || difficulty.equals("s"))) {
+            System.out.print("Type \"e\" for easy mode\nType \"n\" for normal mode\nType \"h\" for hard mode\nType \"test\" for testing mode");
+            difficulty = SCANNER.nextLine().toLowerCase();
+            if (difficulty.equals("e")) {
+                easyMode = true;
+                System.out.print("You chose " + Colors.GREEN + "EASY" + Colors.RESET + " mode.");
+            } else if (difficulty.equals("n")) {
+                System.out.print("You chose " + Colors.YELLOW + "NORMAL" + Colors.RESET + " mode.");
+            } else if (difficulty.equals("h")) {
                 hardMode = true;
-            } else if (hard.equals("n")) {
-                hardMode = true;
-                hardMode = false;
-            } else if (hard.equals("test")) {
+                System.out.print("You chose " + Colors.RED + "HARD" + Colors.RESET + " mode.");
+                System.out.print("Well well well, someone's up for a challenge, I see? \nGood luck out there, tough guy...");
+            } else if (difficulty.equals("test")) {
                 testMode = true;
-            } else if (hard.equals("s")) {
+                System.out.print("You chose " + Colors.BLUE + "TESTING" + Colors.RESET + " mode.");
+            } else if (difficulty.equals("s")) {
                 samuraiMode = true;
+                System.out.print("WOWZERS!! You unlocked the secret " + Colors.CYAN + "SAMURAI" + Colors.RESET + " mode!!!");
+                System.out.print("TIME TO SLICE AND DICE, BOY!!!");
             } else {
                 System.out.print("That ain't an option, bucko. Try again: ");
             }
@@ -89,6 +98,10 @@ public class TreasureHunter {
             hunter.addItem("horse");
             hunter.addItem("boat");
             hunter.addItem("boots");
+        }
+
+        if (easyMode) {
+            hunter.changeGold(20);
         }
 
         if (hardMode) {
@@ -155,9 +168,6 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
 
-            if (choice.equals("e")) {
-                currentTown.setNewsTo(currentTown.wonBrawl());
-            }
 
         }
     }
@@ -211,7 +221,13 @@ public class TreasureHunter {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
     }
-
+    public static boolean checkForEasyMode() {
+        if (easyMode) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static boolean ifSamuraiMode() {
         if (samuraiMode) {
@@ -220,5 +236,4 @@ public class TreasureHunter {
             return false;
         }
     }
-
 }

@@ -218,7 +218,12 @@ public class Shop {
      * @return The sell price of the item.
      */
     public int getBuyBackCost(String item) {
-        int cost = (int) (getCostOfItem(item) * markdown);
+        int cost = 0;
+        if (TreasureHunter.checkForEasyMode()) {
+            cost = (int) (getCostOfItem(item) * markdown);
+        } else {
+            cost = (getCostOfItem(item));
+        }
         return cost;
     }
 }
