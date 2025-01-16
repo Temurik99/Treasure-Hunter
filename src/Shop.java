@@ -219,7 +219,7 @@ public class Shop {
      */
     public int getBuyBackCost(String item) {
         int cost = 0;
-        if (TreasureHunter.checkForEasyMode()) {
+        if (!(TreasureHunter.checkForEasyMode())) {
             cost = (int) (getCostOfItem(item) * markdown);
         } else {
             cost = (getCostOfItem(item));
