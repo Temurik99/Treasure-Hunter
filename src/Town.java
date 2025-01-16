@@ -131,6 +131,7 @@ public class Town {
             }
             if (Math.random() > noTroubleChance) {
                 printMessage = "You couldn't find any trouble";
+                brawlChecker = 0;
             } else {
                 if (hunter.hasItemInKit("sword")) {
                     int goldDiff = (int) (Math.random() * 10) + 1;
